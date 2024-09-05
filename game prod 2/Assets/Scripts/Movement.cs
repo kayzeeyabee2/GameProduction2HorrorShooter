@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         controller.Move(move * Time.deltaTime * playerSpeed);
 
+
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
@@ -29,7 +30,7 @@ public class Movement : MonoBehaviour
             playerVelocity.y = 0;
         }
         //Rotates player in the direction of movement
-        if (move != Vector3.zero)
+        if (move.magnitude > 0)
         {
             gameObject.transform.forward = move;
         }
